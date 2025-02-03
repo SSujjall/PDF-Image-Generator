@@ -1,0 +1,6 @@
+@PDF_Image_Gen.API_HostAddress = http://localhost:5019
+
+GET {{PDF_Image_Gen.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
