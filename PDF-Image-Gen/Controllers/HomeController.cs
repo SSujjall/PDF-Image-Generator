@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using iTextSharp.text.pdf;
-using iTextSharp.text;
 using Microsoft.AspNetCore.Mvc;
 using PDF_Image_Gen.Models;
 
@@ -34,7 +33,7 @@ namespace PDF_Image_Gen.Controllers
                 // Create PDF
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    using (Document document = new Document(PageSize.A4, 25, 25, 25, 25))
+                    using (iTextSharp.text.Document document = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4, 25, 25, 25, 25))
                     {
                         PdfWriter writer = PdfWriter.GetInstance(document, ms);
                         document.Open();
@@ -42,7 +41,7 @@ namespace PDF_Image_Gen.Controllers
                         // Convert byte array to iTextSharp Image
                         using (var imageStream = new MemoryStream(imageBytes))
                         {
-                            Image image = Image.GetInstance(imageStream);
+                            iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(imageStream);
 
                             // Scale image to fit page width while maintaining aspect ratio
                             float pageWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
@@ -53,8 +52,6 @@ namespace PDF_Image_Gen.Controllers
                         }
                         document.Close();
                     }
-
-                    // Return PDF as file
                     return File(ms.ToArray(), "application/pdf", "receipt.pdf");
                 }
             }

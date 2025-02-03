@@ -138,8 +138,8 @@
 			const element = document.querySelector('.receipt-container');
 
 			const canvas = await html2canvas(element, {
-				scale: 2, // Higher scale for better quality
-				useCORS: true, // Enable CORS for images
+				scale: 2, // scale (higher = better)
+				useCORS: true,
 				logging: false
 			});
 
