@@ -17,6 +17,12 @@ namespace PDF_Image_Gen.API.Controllers
             _logger = logger;
         }
 
+        [HttpPost("convert-html-to-swagger-acceptable")]
+        public async Task<IActionResult> Test()
+        {
+            return Ok();
+        }
+
         [HttpPost("generate-pdf")]
         [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
