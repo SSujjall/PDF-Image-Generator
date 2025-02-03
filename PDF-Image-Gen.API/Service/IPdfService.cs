@@ -6,6 +6,6 @@ namespace PDF_Image_Gen.API.Service
     public interface IPdfService
     {
         //Task<string> ConvertHtmlToJsonAsync(string htmlContent);
-        Task<PdfResponse> GeneratePdfFromHtml(PdfRequest request);
+        Task<PdfResponse> GeneratePdfFromHtml();
     }
 }

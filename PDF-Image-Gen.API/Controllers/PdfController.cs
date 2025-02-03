@@ -17,14 +17,14 @@ namespace PDF_Image_Gen.API.Controllers
             _logger = logger;
         }
 
-        [HttpPost("generate-pdf")]
+        [HttpGet("Get-pdf")]
         [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GeneratePdf(PdfRequest request)
+        public async Task<IActionResult> GeneratePdf()
         {
             try
             {
-                var result = await _pdfService.GeneratePdfFromHtml(request);
+                var result = await _pdfService.GeneratePdfFromHtml();
                 return File(result.FileContents, result.ContentType, result.FileName);
             }
             catch (Exception ex)
