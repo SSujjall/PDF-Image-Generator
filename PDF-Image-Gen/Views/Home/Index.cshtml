@@ -155,52 +155,52 @@
 </body>
 
 <script>
-	// async function captureAndDownload() {
-	// 	try {
-	// 		const element = document.querySelector('.receipt-container');
+	async function captureAndDownload() {
+		try {
+			const element = document.querySelector('.receipt-container');
 
-	// 		const canvas = await html2canvas(element, {
-	// 			scale: 2, // scale (higher = better)
-	// 			useCORS: true,
-	// 			logging: false
-	// 		});
+			const canvas = await html2canvas(element, {
+				scale: 2, // scale (higher = better)
+				useCORS: true,
+				logging: false
+			});
 
-	// 		// Convert canvas to base64 string
-	// 		const base64Image = canvas.toDataURL('image/png');
+			// Convert canvas to base64 string
+			const base64Image = canvas.toDataURL('image/png');
 
-	// 		// Send to server
-	// 		const response = await fetch('/Home/GeneratePDF', {
-	// 			method: 'POST',
-	// 			headers: {
-	// 				'Content-Type': 'application/json',
-	// 			},
-	// 			body: JSON.stringify(base64Image)
-	// 		});
+			// Send to server
+			const response = await fetch('/Home/GeneratePDF', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(base64Image)
+			});
 
-	// 		if (!response.ok) {
-	// 			throw new Error('PDF generation failed');
-	// 		}
+			if (!response.ok) {
+				throw new Error('PDF generation failed');
+			}
 
-	// 		// Get the PDF blob
-	// 		const blob = await response.blob();
+			// Get the PDF blob
+			const blob = await response.blob();
 
-	// 		// Create download link
-	// 		const downloadUrl = window.URL.createObjectURL(blob);
-	// 		const link = document.createElement('a');
-	// 		link.href = downloadUrl;
-	// 		link.download = 'receipt.pdf';
+			// Create download link
+			const downloadUrl = window.URL.createObjectURL(blob);
+			const link = document.createElement('a');
+			link.href = downloadUrl;
+			link.download = 'receipt.pdf';
 
-	// 		// Trigger download
-	// 		document.body.appendChild(link);
-	// 		link.click();
-	// 		document.body.removeChild(link);
+			// Trigger download
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
 
-	// 		// Clean up
-	// 		window.URL.revokeObjectURL(downloadUrl);
+			// Clean up
+			window.URL.revokeObjectURL(downloadUrl);
 
-	// 	} catch (error) {
-	// 		console.error('Error:', error);
-	// 		alert('Error generating PDF. Please try again.');
-	// 	}
-	// }
+		} catch (error) {
+			console.error('Error:', error);
+			alert('Error generating PDF. Please try again.');
+		}
+	}
 </script>
